@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Biblioteca | Entre o Amor e o Caos</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <script defer src="js/destaques.js"></script>
+  <script defer src="js/pesquisar.js"></script>
+  <script defer src="js/script.js"></script>
+  <script defer src="js/leitura.js"></script>
+</head>
+
+<body>
+  <header>
+    <div class="header-logo">
+      <img src="imagem/logo.png" alt="Logo" class="logo">
+      <h1>Biblioteca Colleen Hoover</h1>
+    </div>
+    <nav id="menu" class="topin" aria-label="Principal">
+      <a href="index.html">Início</a>
+      <a href="perfil.html">Perfil</a>
+    </nav>
+    <button id="theme-toggle">🌙</button>
+  </header>
+
+  <main class="biblioteca">
+    <p>Descubra as histórias emocionantes e intensas de Colleen Hoover. Clique em "Ler Agora" para começar sua leitura.</p>
+
+    <!--filtros e pesquisa -->
+    <div class="filtros-container">
+      <div class="pesquisa">
+        <input type="text" id="pesquisa" placeholder="Pesquisar livro...">
+      </div>
+
+      <div class="filtro-genero">
+        <label for="genero-select">Gênero:</label>
+        <select id="genero-select">
+          <option value="">Todos os Gêneros</option>
+          <option value="romance">Romance</option>
+          <option value="drama">Drama</option>
+          <option value="suspense">Suspense</option>
+          <option value="ficção">Ficção</option>
+          <option value="contemporâneo">Contemporâneo</option>
+        </select>
+      </div>
+
+      <!-- Botão para mostrar apenas favoritos -->
+      <div class="filtro-favoritos">
+        <button id="btn-favoritos">❤️ Meus Favoritos</button>
+      </div>
+    </div>
+
+    <div class="livros-grid">
+      <div class="livro" data-genero="romance">
+        <div class="livro-header">
+          <img src="imagem/acaba.jpg" alt="É Assim que Acaba">
+          <button class="btn-favorito" title="Adicionar aos favoritos">🤍</button>
+        </div>
+        <h3>É Assim que Acaba</h3>
+        <p class="genero-tag">Romance | Drama</p>
+        <p>Lily Bloom, uma mulher que se mudou para Boston com o sonho de abrir sua própria floricultura, se apaixona
+          pelo neurocirurgião Ryle Kincaid.</p>
+        <a href="https://drive.google.com/file/d/1Edj7NoSgDHdJa4MF5IGFhRoeRpIVYV-x/view?usp=sharing"  class="btn">Ler Agora </a>
+      </div>
+
+      <div class="livro" data-genero="romance">
+        <div class="livro-header">
+          <img src="imagem/comeca.jpg" alt="É Assim que Começa">
+          <button class="btn-favorito" title="Adicionar aos favoritos">🤍</button>
+        </div>
+        <h3>É Assim que Começa</h3>
+        <p class="genero-tag">Romance | Drama</p>
+        <p> A continuação de É assim que acaba mostra Lily Bloom lidando com as consequências de sua decisão e
+          explorando temas como amor, perdão e resiliência. </p>
+        <a href="https://drive.google.com/file/d/1U7RxpEO3FE4cvXNbkPA-QGqaiBnSv7un/view?usp=sharing" class="btn">Ler Agora</a>
+      </div>
+
+      <div class="livro" data-genero="drama">
+        <div class="livro-header">
+          <img src="imagem/partes.jpg" alt="As Mil Partes do Meu Coração">
+          <button class="btn-favorito" title="Adicionar aos favoritos">🤍</button>
+        </div>
+        <h3>As Mil Partes do Meu Coração</h3>
+        <p class="genero-tag">Drama | Ficção</p>
+        <p>A adolescente Merit Voss vive em uma casa disfuncional, uma antiga igreja, com sua família excêntrica e cheia
+          de segredos, incluindo sua mãe no porão e a nova esposa do pai no andar de cima. </p>
+        <a href="https://drive.google.com/file/d/110ncAu2Szg4-qOPthbaGAU6UtvxZWnhr/view?usp=sharing" class="btn">Ler Agora</a>
+      </div>
+
+      <div class="livro" data-genero="suspense">
+        <div class="livro-header">
+          <img src="imagem/tarde.jpg" alt="Tarde Demais">
+          <button class="btn-favorito" title="Adicionar aos favoritos">🤍</button>
+        </div>
+        <h3>Tarde Demais</h3>
+        <p class="genero-tag">Suspense | Drama</p>
+        <p>O livro acompanha Sloan, uma jovem presa a um relacionamento perigoso com o traficante Asa Jackson. </p>
+        <a href="https://drive.google.com/file/d/1j33y4dp7QEIH5B9Ciyl3IYGaF78lYi8Z/view?usp=sharing" class="btn">Ler Agora</a>
+      </div>
+
+      <div class="livro" data-genero="suspense">
+        <div class="livro-header">
+          <img src="imagem/verity.jpg" alt="Verity">
+          <button class="btn-favorito" title="Adicionar aos favoritos">🤍</button>
+        </div>
+        <h3>Verity</h3>
+        <p class="genero-tag">Suspense | Ficção</p>
+        <p>Lowen, uma escritora, é contratada para terminar a série de livros de Verity Crawford, uma autora famosa que
+          está incapacitada.</p>
+        <a href="https://drive.google.com/file/d/1ZqmY3mkNiSJwUhhuFHNaOJ9-eUsuqzKG/view?usp=sharing" class="btn">Ler Agora</a>
+      </div>
+
+      <div class="livro" data-genero="ficção">
+        <div class="livro-header">
+          <img src="imagem/sem.jpg" alt="Sem Esperança">
+          <button class="btn-favorito" title="Adicionar aos favoritos">🤍</button>
+        </div>
+        <h3>Sem Esperança</h3>
+        <p class="genero-tag">Ficção | Contemporâneo</p>
+        <p> É o primeiro livro da série Hopeless. A sinopse trata da história de Sky, uma adolescente que foi educada em
+          casa e nunca teve permissão para usar eletrônicos. </p>
+        <a href="https://drive.google.com/file/d/1RU9UoX79DsoGnqYpJTUQlME56cUvShCj/view?usp=sharing" class="btn">Ler Agora</a>
+      </div>
+
+      <div class="livro" data-genero="contemporâneo">
+        <div class="livro-header">
+          <img src="imagem/confesse.jpg" alt="Confesse">
+          <button class="btn-favorito" title="Adicionar aos favoritos">🤍</button>
+        </div>
+        <h3>Confesse</h3>
+        <p class="genero-tag">Contemporâneo | Romance</p>
+        <p> Owen Gentry é um artista que recebe confissões anônimas em sua galeria de arte e as usa como inspiração para
+          suas obras.
+        </p>
+        <a href="https://drive.google.com/file/d/161svH0FrMy1YaaoSeWEBo6FO3JacpZFS/view?usp=sharing" class="btn">Ler Agora</a>
+      </div>
+
+      <div class="livro" data-genero="romance">
+        <div class="livro-header">
+          <img src="imagem/imperfeicoes.jpg" alt="Todas as Suas (Im)Perfeições">
+          <button class="btn-favorito" title="Adicionar aos favoritos">🤍</button>
+        </div>
+        <h3>Todas as Suas (Im)Perfeições</h3>
+        <p class="genero-tag">Romance | Drama</p>
+        <p>A história explora as complexidades do casamento de Quinn e Graham, cujo amor se tornou problemático com o
+          passar dos anos.</p>
+        <a href="https://drive.google.com/file/d/1aoYg208h41Ho5XrKoLPiSO65WCBbwDZV/view?usp=sharing" class="btn">Ler Agora</a>
+      </div>
+
+      <div class="livro" data-genero="drama">
+        <div class="livro-header">
+          <img src="imagem/amor.jpg" alt="O Lado Feio do Amor">
+          <button class="btn-favorito" title="Adicionar aos favoritos">🤍</button>
+        </div>
+        <h3>O Lado Feio do Amor</h3>
+        <p class="genero-tag">Drama | Romance</p>
+        <p>Uma história apaixonante sobre segredos, desejo e perdão.</p>
+        <a href="https://drive.google.com/file/d/1tHZJrRiw-VredhFz155uJ1RCRAY52GY5/view?usp=sharing" class="btn">Ler Agora</a>
+      </div>
+
+      <div class="livro" data-genero="romance">
+        <div class="livro-header">
+          <img src="imagem/umdia.jpg" alt="Talvez um Dia">
+          <button class="btn-favorito" title="Adicionar aos favoritos">🤍</button>
+        </div>
+        <h3>Talvez um Dia</h3>
+        <p class="genero-tag">Romance | Drama</p>
+        <p>A história acompanha a musicista Sydney, que descobre a traição do namorado e da melhor amiga e se encontra
+          em uma situação desesperadora.</p>
+        <a href="https://drive.google.com/file/d/1_xnMXwHULD7EG5PXCiArz5vL8-iNOFAI/view?usp=sharing" class="btn">Ler Agora</a>
+      </div>
+
+      <div class="livro" data-genero="romance">
+        <div class="livro-header">
+          <img src="imagem/agora.jpg" alt="Talvez Agora">
+          <button class="btn-favorito" title="Adicionar aos favoritos">🤍</button>
+        </div>
+        <h3>Talvez Agora</h3>
+        <p class="genero-tag">Romance | Drama</p>
+        <p>A continuação de Talvez um dia foca na vida após o término do relacionamento de Ridge com Maggie, explorando
+          como ele e Sydney tentam aprofundar sua conexão. </p>
+        <a href="https://drive.google.com/file/d/1ykyblmWjQI4qyaQPZ2ljwcXcx9NBtEiD/view?usp=sharing" class="btn">Ler Agora</a>
+      </div>
+
+      <div class="livro" data-genero="ficção">
+        <div class="livro-header">
+          <img src="imagem/perdido.jpg" alt="Um Caso Perdido">
+          <button class="btn-favorito" title="Adicionar aos favoritos">🤍</button>
+        </div>
+        <h3>Um Caso Perdido</h3>
+        <p class="genero-tag">Ficção | Suspense</p>
+        <p> É uma releitura do livro Um caso perdido (Finding Perfect), focada na perspectiva do protagonista Holder.
+          Ele conhece Sky e a reconhece como a garota que ele procurou por anos. </p>
+        <a href="https://drive.google.com/file/d/1e573LFXvRSB8lECvtxB-MHG7D9v3t9KG/view?usp=sharing" class="btn">Ler Agora</a>
+      </div>
+
+      <div class="livro" data-genero="romance">
+        <div class="livro-header">
+          <img src="imagem/nunca.jpg" alt="Nunca Jamais">
+          <button class="btn-favorito" title="Adicionar aos favoritos">🤍</button>
+        </div>
+        <h3>Nunca Jamais</h3>
+        <p class="genero-tag">Romance | Ficção</p>
+        <p> Charlie e Silas estão juntos há quatro anos, mas um dia acordam sem lembrar de nada um do outro ou de seu
+          relacionamento. </p>
+        <a href="https://drive.google.com/file/d/1tzRg4NnbE6TfEm2JfwSmpH_X_ODNZXLn/view?usp=sharing" class="btn">Ler Agora</a>
+      </div>
+
+      <div class="livro" data-genero="contemporâneo">
+        <div class="livro-header">
+          <img src="imagem/metrica.jpg" alt="Métrica">
+          <button class="btn-favorito" title="Adicionar aos favoritos">🤍</button>
+        </div>
+        <h3>Métrica</h3>
+        <p class="genero-tag">Contemporâneo | Romance</p>
+        <p>O primeiro volume da série apresenta a história de Layken, uma jovem de 18 anos que, após a morte de seu pai,
+          precisa se mudar com a mãe e o irmão para uma nova cidade.</p>
+        <a href="https://drive.google.com/file/d/1tHZJrRiw-VredhFz155uJ1RCRAY52GY5/view?usp=sharing" class="btn">Ler Agora</a>
+      </div>
+
+      <div class="livro" data-genero="romance">
+        <div class="livro-header">
+          <img src="imagem/pausa.jpg" alt="Pausa">
+          <button class="btn-favorito" title="Adicionar aos favoritos">🤍</button>
+        </div>
+        <h3>Pausa</h3>
+        <p class="genero-tag">Romance | Drama</p>
+        <p> Neste segundo livro da série, a narrativa é contada do ponto de vista de Will, oferecendo uma nova
+          perspectiva sobre a história de seu relacionamento com Layken.</p>
+        <a href="https://drive.google.com/file/d/1AqUPkkhNeFyXVSQNODMHE4iMbCL-0Lto/view?usp=sharing" class="btn">Ler Agora</a>
+      </div>
+
+      <div class="livro" data-genero="romance">
+        <div class="livro-header">
+          <img src="imagem/garota.jpg" alt="Essa Garota">
+          <button class="btn-favorito" title="Adicionar aos favoritos">🤍</button>
+        </div>
+        <h3>Essa Garota</h3>
+        <p class="genero-tag">Romance | Contemporâneo</p>
+        <p> O último volume da trilogia revisita a história de Will e Layken, agora casados, enquanto eles relembram os
+          obstáculos que superaram para ficarem juntos.  </p>
+        <a href="https://drive.google.com/file/d/1GplwqAjV0qRxPMuHe07DhNYKVviU_PuG/view?usp=sharing" class="btn">Ler Agora</a>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <script defer src="script.js"></script>
+    <a href="index.html" class="btn-voltar-biblioteca">Voltar ao Início</a>
+  </footer>
+</body>
+</html>

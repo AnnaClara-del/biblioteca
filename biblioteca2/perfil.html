@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Meu Perfil | Entre o Amor e o Caos</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/perfil.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <script defer src="js/script.js"></script>
+  <script defer src="js/perfil.js"></script>
+</head>
+<body>
+  <header>
+    <div class="header-logo">
+      <img src="imagem/logo.png" alt="Logo Entre o Amor e o Caos" class="logo">
+      <h1>Biblioteca Virtual</h1>
+    </div>
+
+    <nav id="menu" class="nav" aria-label="Principal">
+      <a href="biblioteca.html">Biblioteca</a>
+      <a href="perfil.html">Perfil</a>
+      <a href="login.html" id="btn-logout">Sair</a>
+    </nav>
+    <button id="theme-toggle">🌙</button>
+  </header>
+
+  <main class="perfil-container">
+    <div class="perfil-header">
+      <div class="perfil-foto">
+        <img id="user-avatar" src="public/placeholder-user.jpg" alt="Avatar do usuário" class="avatar-grande">
+        <button id="btn-alterar-foto" class="btn-alterar-foto">📷 Alterar Foto</button>
+      </div>
+      
+      <div class="perfil-info">
+        <h1 id="user-name">Admin</h1>
+        <p id="user-email" class="email-usuario">admin@biblioteca.com</p>
+        <p class="data-cadastro">Membro desde: <span id="data-membro">2025</span></p>
+      </div>
+    </div>
+
+    <div class="perfil-conteudo">
+      <!-- Abas de navegação -->
+      <div class="perfil-abas">
+        <button class="aba-btn aba-ativa" data-aba="dados">
+          👤 Dados Pessoais
+        </button>
+        <button class="aba-btn" data-aba="leitura">
+          📚 Minha Leitura
+        </button>
+        <button class="aba-btn" data-aba="configuracoes">
+          ⚙️ Configurações
+        </button>
+      </div>
+
+      <!-- Aba: Dados Pessoais -->
+      <section class="aba-conteudo aba-ativa" id="aba-dados">
+        <div class="secao-perfil">
+          <h2>Informações Pessoais</h2>
+          <form id="form-dados" class="form-perfil">
+            <div class="form-grupo">
+              <label for="nome">Nome Completo</label>
+              <input type="text" id="nome" value="Admin" class="input-perfil">
+            </div>
+            
+            <div class="form-grupo">
+              <label for="email">Email</label>
+              <input type="email" id="email" value="admin@biblioteca.com" class="input-perfil">
+            </div>
+            
+            <div class="form-grupo">
+              <label for="data-nasc">Data de Nascimento</label>
+              <input type="date" id="data-nasc" class="input-perfil">
+            </div>
+            
+            <div class="form-grupo">
+              <label for="genero-favorito">Gênero Favorito</label>
+              <select id="genero-favorito" class="input-perfil">
+                <option value="">Selecione um gênero</option>
+                <option value="romance">Romance</option>
+                <option value="drama">Drama</option>
+                <option value="suspense">Suspense</option>
+                <option value="ficção">Ficção</option>
+                <option value="contemporâneo">Contemporâneo</option>
+              </select>
+            </div>
+            
+            <div class="form-grupo">
+              <label for="bio">Bio</label>
+              <textarea id="bio" class="input-perfil textarea-perfil" placeholder="Conte-nos sobre você..." rows="4"></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-salvar">💾 Salvar Alterações</button>
+            <button type="button" id="btn-voltar" class="btn btn-voltar">← Voltar</button>
+          </form>
+        </div>
+      </section>
+
+      <!-- Aba: Minha Leitura -->
+      <section class="aba-conteudo" id="aba-leitura">
+        <div class="secao-perfil">
+          <h2>Histórico de Leitura</h2>
+          <div id="historico-leitura" class="historico-container">
+            <p class="vazio">Você ainda não começou a ler nenhum livro</p>
+          </div>
+        </div>
+      </section>
+
+
+      <!-- Aba: Configurações -->
+      <section class="aba-conteudo" id="aba-configuracoes">
+        <div class="secao-perfil">
+          <h2>Configurações da Conta</h2>
+         <div class="config-bloco">
+            <h3>Alterar Senha</h3>
+            <form id="form-senha" class="form-perfil">
+              <div class="form-grupo">
+                <label for="senha-atual">Senha Atual</label>
+                <input type="password" id="senha-atual" class="input-perfil">
+              </div>
+              
+              <div class="form-grupo">
+                <label for="senha-nova">Nova Senha</label>
+                <input type="password" id="senha-nova" class="input-perfil">
+              </div>
+              
+              <div class="form-grupo">
+                <label for="confirmar-senha">Confirmar Nova Senha</label>
+                <input type="password" id="confirmar-senha" class="input-perfil">
+              </div>
+
+              <button type="submit" class="btn btn-salvar">🔐 Alterar Senha</button>
+            </form>
+          </div>
+
+          <div class="config-bloco">
+            <h3>Preferências</h3>
+            <div class="preferencia-item">
+              <label>
+                <input type="checkbox" id="notificacoes" checked>
+                Receber notificações de novos livros
+              </label>
+            </div>
+            <div class="preferencia-item">
+              <label>
+                <input type="checkbox" id="newsletter" checked>
+                Receber newsletter semanal
+              </label>
+            </div>
+          </div>
+
+          <div class="config-bloco perigoso">
+            <h3>Zona de Perigo</h3>
+            <p>As ações abaixo são irreversíveis. Tenha cuidado!</p>
+            <button id="btn-deletar-conta" class="btn btn-perigo">🗑️ Deletar Minha Conta</button>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="footer-sticky">© 2025 – Entre o amor e o caos.</footer>
+</body>
+</html>

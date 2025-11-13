@@ -1,0 +1,32 @@
+/* Responsividade */
+
+@media (max-width: 1024px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+  }
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .site-nav .menu {
+    display: none;
+    position: absolute;
+    right: 1rem;
+    top: 64px;
+    background: var(--card);
+    padding: 0.5rem;
+    border-radius: 0.8rem;
+    border: 1px solid rgba(148, 163, 184, 0.15);
+  }
+  .site-nav .menu.open {
+    display: flex;
+    flex-direction: column;
+  }
+  .nav-toggle {
+    display: block;
+  }
+}
+@media (max-width: 540px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}

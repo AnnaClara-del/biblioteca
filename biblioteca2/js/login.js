@@ -24,17 +24,18 @@ document.addEventListener("DOMContentLoaded", () => {
     const user = document.getElementById("login-user").value.trim()
     const pass = document.getElementById("login-pass").value.trim()
 
-    // Busca usuários salvos no localStorage
-    const users = JSON.parse(localStorage.getItem("users")) || []
-    const foundUser = users.find((u) => u.username === user && u.password === pass)
+    const resultado = fazerLogin(user, pass)
 
-    if (foundUser) {
-      alert("Login realizado com sucesso!")
-      // Salva o usuário logado
-      localStorage.setItem("currentUser", JSON.stringify(foundUser))
-      window.location.href = "biblioteca.html"
+    if (resultado.sucesso) {
+      if (resultado.usuario.isAdmin) {
+        alert("✅ Bem-vindo, Administrador!")
+        window.location.href = "admin.html"
+      } else {
+        alert("✅ Login realizado com sucesso!")
+        window.location.href = "biblioteca.html"
+      }
     } else {
-      alert("Usuário ou senha incorretos. Tente novamente.")
+      alert("❌ " + (resultado.mensagem || "Usuário ou senha incorretos. Tente novamente."))
       document.getElementById("login-pass").value = ""
       document.getElementById("login-pass").focus()
     }
@@ -52,42 +53,23 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Validações
     if (password.length < 4) {
-      alert("A senha deve ter pelo menos 4 caracteres!")
+      alert("❌ A senha deve ter pelo menos 4 caracteres!")
       return
     }
 
     if (password !== confirmPassword) {
-      alert("As senhas não conferem!")
+      alert("❌ As senhas não conferem!")
       return
     }
 
-    // Busca usuários salvos
-    const users = JSON.parse(localStorage.getItem("users")) || []
+    const resultado = registrarUsuario(name, username, password, email)
 
-    // Verifica se o usuário já existe
-    if (users.some((u) => u.username === username)) {
-      alert("Este usuário já existe! Escolha outro.")
-      return
+    if (resultado.sucesso) {
+      alert("✅ Conta criada com sucesso! Faça login para continuar.")
+      registerForm.reset()
+      document.querySelector('[data-tab="login"]').click()
+    } else {
+      alert("❌ " + (resultado.mensagem || "Erro ao criar conta. Tente novamente."))
     }
-
-    // Cria novo usuário
-    const newUser = {
-      id: Date.now(),
-      name: name,
-      username: username,
-      password: password,
-      email: email,
-      createdAt: new Date().toLocaleDateString("pt-BR"),
-    }
-
-    // Salva o novo usuário
-    users.push(newUser)
-    localStorage.setItem("users", JSON.stringify(users))
-
-    alert("Conta criada com sucesso! Faça login para continuar.")
-
-    // Limpa o formulário e volta para a aba de login
-    registerForm.reset()
-    document.querySelector('[data-tab="login"]').click()
   })
 })

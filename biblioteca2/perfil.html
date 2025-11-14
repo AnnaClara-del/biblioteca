@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/perfil.css">
   <link rel="stylesheet" href="css/responsive.css">
+  <script defer src="js/auth.js"></script>
   <script defer src="js/script.js"></script>
   <script defer src="js/perfil.js"></script>
 </head>
@@ -20,7 +21,7 @@
     <nav id="menu" class="nav" aria-label="Principal">
       <a href="biblioteca.html">Biblioteca</a>
       <a href="perfil.html">Perfil</a>
-      <a href="login.html" id="btn-logout">Sair</a>
+      <a href="admin.html" id="admin-link" style="display: none;">Admin</a>
     </nav>
     <button id="theme-toggle">🌙</button>
   </header>
@@ -90,8 +91,11 @@
               <textarea id="bio" class="input-perfil textarea-perfil" placeholder="Conte-nos sobre você..." rows="4"></textarea>
             </div>
 
-            <button type="submit" class="btn btn-salvar">💾 Salvar Alterações</button>
-            <button type="button" id="btn-voltar" class="btn btn-voltar">← Voltar</button>
+            <!-- Adicionando botão "Voltar" de volta -->
+            <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
+              <button type="submit" class="btn btn-salvar">💾 Salvar Alterações</button>
+              <button type="button" class="btn btn-voltar" onclick="window.location.href='biblioteca.html'">← Voltar</button>
+            </div>
           </form>
         </div>
       </section>
@@ -111,7 +115,7 @@
       <section class="aba-conteudo" id="aba-configuracoes">
         <div class="secao-perfil">
           <h2>Configurações da Conta</h2>
-         <div class="config-bloco">
+          <div class="config-bloco">
             <h3>Alterar Senha</h3>
             <form id="form-senha" class="form-perfil">
               <div class="form-grupo">

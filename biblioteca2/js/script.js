@@ -19,3 +19,22 @@ if (themeToggle) {
       '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="theme-icon"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>'
   }
 }
+
+document.addEventListener('DOMContentLoaded', function() {
+  // Aguardar auth.js estar carregado
+  setTimeout(() => {
+    if (typeof verificarAdmin === 'function') {
+      const adminLink = document.getElementById('admin-link')
+      
+      if (adminLink) {
+        if (verificarAdmin()) {
+          adminLink.style.display = '' // Mostrar link
+          console.log('[v0] Link Admin visível para administrador')
+        } else {
+          adminLink.style.display = 'none' // Esconder link
+          console.log('[v0] Link Admin escondido para usuário comum')
+        }
+      }
+    }
+  }, 100) // Pequeno delay para garantir que auth.js foi carregado
+})

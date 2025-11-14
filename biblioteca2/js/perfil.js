@@ -1,6 +1,12 @@
 // Script para a página de perfil
 
 document.addEventListener("DOMContentLoaded", () => {
+  if (!verificarLogin()) {
+    alert('Você precisa estar logado para acessar esta página!')
+    window.location.href = 'login.html'
+    return
+  }
+
   // Recuperar dados do usuário do localStorage
   carregarDadosPerfil()
 
@@ -30,20 +36,19 @@ document.addEventListener("DOMContentLoaded", () => {
   const btnLogout = document.getElementById("btn-logout")
   btnLogout.addEventListener("click", fazerLogout)
 
-  // Botão voltar
-  const btnVoltar = document.getElementById("btn-voltar")
-  if (btnVoltar) {
-    btnVoltar.addEventListener("click", voltarPerfil)
-  }
-
   // Carregar favoritos e histórico
   carregarFavoritos()
   carregarHistorico()
 })
 
-// Carregar dados do perfil do localStorage
 function carregarDadosPerfil() {
-  const usuario = JSON.parse(localStorage.getItem("currentUser")) || {}
+  const usuario = obterUsuarioLogado()
+  
+  if (!usuario) {
+    alert('Sessão expirada! Faça login novamente.')
+    window.location.href = 'login.html'
+    return
+  }
 
   document.getElementById("user-name").textContent = usuario.name || usuario.username || "Usuário"
   document.getElementById("user-email").textContent = usuario.email || "sem email"
@@ -58,24 +63,6 @@ function carregarDadosPerfil() {
   if (usuario.avatar) {
     document.getElementById("user-avatar").src = usuario.avatar
   }
-}
-
-// Salvar dados pessoais
-function salvarDadosPerfil(e) {
-  e.preventDefault()
-
-  const usuario = JSON.parse(localStorage.getItem("currentUser")) || {}
-
-  usuario.name = document.getElementById("nome").value
-  usuario.email = document.getElementById("email").value
-  usuario.dataNasc = document.getElementById("data-nasc").value
-  usuario.generoFavorito = document.getElementById("genero-favorito").value
-  usuario.bio = document.getElementById("bio").value
-
-  localStorage.setItem("currentUser", JSON.stringify(usuario))
-
-  alert("✅ Dados salvos com sucesso!")
-  carregarDadosPerfil()
 }
 
 // Alternar abas
@@ -98,27 +85,41 @@ function mudarAba(e) {
   document.getElementById("aba-" + abaAtiva).classList.add("aba-ativa")
 }
 
-// Alterar foto de perfil
 function alterarFoto() {
   const input = document.createElement("input")
   input.type = "file"
   input.accept = "image/*"
+  input.capture = "environment" // Permite usar câmera em dispositivos mobile
 
   input.addEventListener("change", (e) => {
     const file = e.target.files[0]
     if (file) {
+      // Validar tamanho do arquivo (máx 5MB)
+      if (file.size > 5 * 1024 * 1024) {
+        alert("❌ A imagem deve ter no máximo 5MB!")
+        return
+      }
+
+      // Validar tipo de arquivo
+      if (!file.type.startsWith('image/')) {
+        alert("❌ Por favor, selecione apenas imagens!")
+        return
+      }
+
       const reader = new FileReader()
       reader.onload = (event) => {
         const novaFoto = event.target.result
 
-        // Salvar no localStorage
-        const usuario = JSON.parse(localStorage.getItem("currentUser")) || {}
-        usuario.avatar = novaFoto
-        localStorage.setItem("currentUser", JSON.stringify(usuario))
-
-        // Atualizar imagem na página
-        document.getElementById("user-avatar").src = novaFoto
-        alert("✅ Foto de perfil atualizada!")
+        // Atualizar usando função de atualização
+        if (atualizarUsuario({ avatar: novaFoto })) {
+          document.getElementById("user-avatar").src = novaFoto
+          alert("✅ Foto de perfil atualizada com sucesso!")
+        } else {
+          alert("❌ Erro ao atualizar foto de perfil!")
+        }
+      }
+      reader.onerror = () => {
+        alert("❌ Erro ao ler o arquivo!")
       }
       reader.readAsDataURL(file)
     }
@@ -127,7 +128,6 @@ function alterarFoto() {
   input.click()
 }
 
-// Alterar senha
 function alterarSenha(e) {
   e.preventDefault()
 
@@ -135,9 +135,9 @@ function alterarSenha(e) {
   const senhaNova = document.getElementById("senha-nova").value
   const confirmarSenha = document.getElementById("confirmar-senha").value
 
-  const usuario = JSON.parse(localStorage.getItem("currentUser")) || {}
+  const usuario = obterUsuarioLogado()
 
-  if (senhaAtual !== usuario.senha) {
+  if (senhaAtual !== usuario.senha && senhaAtual !== usuario.password) {
     alert("❌ Senha atual incorreta!")
     return
   }
@@ -152,11 +152,12 @@ function alterarSenha(e) {
     return
   }
 
-  usuario.senha = senhaNova
-  localStorage.setItem("currentUser", JSON.stringify(usuario))
-
-  alert("✅ Senha alterada com sucesso!")
-  document.getElementById("form-senha").reset()
+  if (atualizarUsuario({ senha: senhaNova, password: senhaNova })) {
+    alert("✅ Senha alterada com sucesso!")
+    document.getElementById("form-senha").reset()
+  } else {
+    alert("❌ Erro ao alterar senha!")
+  }
 }
 
 // Carregar livros favoritos
@@ -218,34 +219,83 @@ function carregarHistorico() {
     .join("")
 }
 
-// Deletar conta
 function deletarConta() {
   const confirmacao = confirm(
-    "⚠️ Tem certeza que deseja deletar sua conta?\n" + "Esta ação é irreversível e todos os seus dados serão perdidos!",
+    "⚠️ ATENÇÃO: Você está prestes a DELETAR SUA CONTA!\n\n" + 
+    "Esta ação é IRREVERSÍVEL e você perderá:\n" +
+    "• Todos os seus dados pessoais\n" +
+    "• Histórico de leitura\n" +
+    "• Livros favoritos\n" +
+    "• Configurações personalizadas\n\n" +
+    "Tem CERTEZA que deseja continuar?"
   )
 
   if (confirmacao) {
-    const confirmacao2 = confirm("⚠️ ÚLTIMA CONFIRMAÇÃO: Você realmente deseja deletar sua conta?")
+    const confirmacao2 = confirm("⚠️ ÚLTIMA CONFIRMAÇÃO:\n\nDigite OK para DELETAR SUA CONTA PERMANENTEMENTE")
 
     if (confirmacao2) {
-      localStorage.removeItem("currentUser")
-      localStorage.removeItem("favoritos")
-      localStorage.removeItem("historico")
-      alert("✅ Sua conta foi deletada com sucesso")
-      window.location.href = "login.html"
+      const usuario = obterUsuarioLogado()
+      
+      // Não permitir deletar conta de admin
+      if (usuario && usuario.isAdmin) {
+        alert("❌ A conta de administrador não pode ser deletada!")
+        return
+      }
+      
+      // Remover da lista de usuários
+      if (usuario) {
+        const usuarios = JSON.parse(localStorage.getItem('usuarios') || '[]')
+        const novaLista = usuarios.filter(u => u.id !== usuario.id)
+        localStorage.setItem('usuarios', JSON.stringify(novaLista))
+      }
+      
+      // Remover dados do usuário
+      localStorage.removeItem('usuarioLogado')
+      localStorage.removeItem('currentUser')
+      localStorage.removeItem('favoritos')
+      localStorage.removeItem('historico')
+      
+      alert("✅ Sua conta foi deletada com sucesso.\n\nSentiremos sua falta! 😢")
+      window.location.href = "index.html"
     }
   }
 }
 
 // Fazer logout
-function fazerLogout() {
+function fazerLogout(e) {
+  e.preventDefault()
   const confirmacao = confirm("Você tem certeza que deseja sair?")
   if (confirmacao) {
+    localStorage.removeItem("usuarioLogado")
     localStorage.removeItem("currentUser")
-    window.location.href = "login.html"
+    window.location.href = "index.html"
   }
 }
 
-function voltarPerfil() {
-  window.location.href = "biblioteca.html"
+function salvarDadosPerfil(e) {
+  e.preventDefault()
+  
+  const nome = document.getElementById("nome").value.trim()
+  const email = document.getElementById("email").value.trim()
+  const dataNasc = document.getElementById("data-nasc").value
+  const generoFavorito = document.getElementById("genero-favorito").value
+  const bio = document.getElementById("bio").value.trim()
+  
+  if (!nome || !email) {
+    alert("❌ Nome e email são obrigatórios!")
+    return
+  }
+  
+  if (atualizarUsuario({ 
+    name: nome, 
+    email: email,
+    dataNasc: dataNasc,
+    generoFavorito: generoFavorito,
+    bio: bio
+  })) {
+    alert("✅ Dados atualizados com sucesso!")
+    carregarDadosPerfil() // Recarregar dados na tela
+  } else {
+    alert("❌ Erro ao atualizar dados!")
+  }
 }

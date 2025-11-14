@@ -1,0 +1,113 @@
+/* PÁGINA DE LEITURA */
+main.leitura-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 20px;
+  gap: 20px;
+  min-height: calc(100vh - 120px);
+}
+
+.info-livro {
+  background: var(--card);
+  border: 1px solid var(--accent);
+  border-radius: 20px;
+  padding: 40px;
+  max-width: 800px;
+  width: 100%;
+  box-shadow: 0 2px 15px var(--shadow);
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+.info-livro:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 25px var(--shadow);
+}
+
+#capa-livro {
+  width: 100%;
+  max-width: 280px;
+  height: auto;
+  border-radius: 15px;
+  margin-bottom: 30px;
+  border: 2px solid var(--accent);
+  box-shadow: 0 4px 12px var(--shadow);
+}
+
+#descricao-livro {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  text-align: justify;
+  margin-bottom: 35px;
+  color: var(--text);
+  padding: 0 10px;
+}
+
+.info-livro nav {
+  margin-top: 20px;
+}
+
+.btn-voltar-biblioteca {
+  background: var(--accent);
+  color: #fff;
+  text-decoration: none;
+  padding: 14px 28px;
+  border-radius: 10px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  border: none;
+  display: inline-block;
+  font-size: 1rem;
+}
+
+body.dark .btn-voltar-biblioteca {
+  background: #d1b97a;
+  color: #1b1b1b;
+}
+
+.btn-voltar-biblioteca:hover {
+  background: #6f5438;
+  transform: scale(1.05);
+}
+
+body.dark .btn-voltar-biblioteca:hover {
+  background: #c9a855;
+}
+
+/* RESPONSIVO MOBILE */
+@media (max-width: 768px) {
+  main.leitura-container {
+    padding: 30px 15px;
+  }
+  
+  .info-livro {
+    padding: 30px 25px;
+  }
+  
+  #capa-livro {
+    max-width: 220px;
+  }
+  
+  #descricao-livro {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+}
+
+@media (max-width: 480px) {
+  .info-livro {
+    padding: 25px 20px;
+  }
+  
+  #capa-livro {
+    max-width: 180px;
+  }
+  
+  .btn-voltar-biblioteca {
+    padding: 12px 24px;
+    font-size: 0.95rem;
+  }
+}

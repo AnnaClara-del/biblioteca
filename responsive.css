@@ -1,0 +1,301 @@
+/* Responsividade  */
+@media (max-width: 768px) {
+  .header-logo {
+    flex-direction: column;
+    gap: 0.5rem;
+    text-align: center;
+  }
+
+  .header-logo h1 {
+    font-size: 1.2rem;
+  }
+
+  .logo {
+    max-width: 40px;
+  }
+
+  header nav {
+    gap: 0.5rem;
+  }
+
+  header nav a {
+    font-size: 0.9rem;
+    padding: 0.5rem 0.75rem;
+  }
+
+  .nav,
+  .topin {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  main {
+    padding: 1rem 0.75rem;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .hero-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Biblioteca */
+  .livros-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .filtros-container {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .pesquisa input,
+  .filtro-genero select,
+  .filtro-favoritos button {
+    width: 100%;
+  }
+
+  /* Perfil */
+  .perfil-header {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 1rem;
+  }
+
+  .perfil-info {
+    width: 100%;
+  }
+
+  .perfil-abas {
+    flex-wrap: wrap;
+  }
+
+  .aba-btn {
+    flex: 1;
+    min-width: 150px;
+    font-size: 0.9rem;
+    padding: 0.75rem;
+  }
+
+  .form-grupo {
+    margin-bottom: 1rem;
+  }
+
+  .input-perfil,
+  .textarea-perfil {
+    font-size: 16px; 
+  }
+
+  /* Admin */
+  .admin-stats {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .stat-card {
+    padding: 1rem;
+  }
+
+  .actions-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .action-btn {
+    width: 100%;
+    padding: 1rem;
+  }
+
+  .modal-content {
+    width: 90%;
+    margin: auto;
+    max-height: 90vh;
+    overflow-y: auto;
+  }
+
+  .books-table {
+    font-size: 0.85rem;
+  }
+
+  .books-table th,
+  .books-table td {
+    padding: 0.75rem 0.5rem;
+  }
+
+  .btn-acao {
+    padding: 0.5rem;
+    font-size: 0.8rem;
+    margin: 2px;
+  }
+
+  /* Forms */
+  .form-actions {
+    flex-direction: column;
+  }
+
+  .form-actions button,
+  .form-actions a {
+    width: 100%;
+  }
+
+  /* Footer */
+  footer {
+    padding: 1rem 0.75rem;
+    font-size: 0.85rem;
+  }
+
+  .footer-sticky {
+    padding: 1rem 0.75rem;
+  }
+
+  .btn-voltar-biblioteca {
+    width: 100%;
+    display: block;
+  }
+
+  /* Generos Grid */
+  .generos-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+  }
+
+  .genero-card {
+    padding: 1rem;
+  }
+
+  .genero-card h3 {
+    font-size: 1rem;
+  }
+
+  /* Intro */
+  .intro-box {
+    padding: 1.5rem;
+  }
+
+  .intro-box h2 {
+    font-size: 1.5rem;
+  }
+
+  .intro-box p {
+    font-size: 0.9rem;
+    line-height: 1.4;
+  }
+}
+
+/* Tablets - Médios dispositivos */
+@media (max-width: 1024px) and (min-width: 769px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .livros-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .admin-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .actions-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Dispositivos muito pequenos (menos de 480px) */
+@media (max-width: 480px) {
+  header {
+    padding: 0.75rem;
+  }
+
+  .header-logo h1 {
+    font-size: 1rem;
+  }
+
+  .theme-toggle {
+    font-size: 1rem;
+    padding: 0.5rem;
+  }
+
+  main {
+    padding: 0.75rem;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  h2 {
+    font-size: 1.25rem;
+  }
+
+  h3 {
+    font-size: 1rem;
+  }
+
+  .livros-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .livro {
+    padding: 0.75rem;
+  }
+
+  .generos-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .filtros-container {
+    gap: 0.75rem;
+  }
+
+  .aba-btn {
+    font-size: 0.8rem;
+    padding: 0.5rem;
+  }
+
+  .btn {
+    font-size: 0.9rem;
+    padding: 0.75rem 1rem;
+  }
+
+  .stat-card {
+    padding: 0.75rem;
+  }
+
+  .stat-number {
+    font-size: 1.5rem;
+  }
+}
+
+/* Paisagem em dispositivos pequenos */
+@media (max-height: 600px) and (orientation: landscape) {
+  header {
+    padding: 0.5rem;
+  }
+
+  main {
+    padding-top: 0.5rem;
+  }
+
+  h1, h2 {
+    margin: 0.25rem 0;
+  }
+
+  .perfil-header {
+    gap: 1rem;
+  }
+
+  .avatar-grande {
+    max-width: 80px;
+    height: 80px;
+  }
+}

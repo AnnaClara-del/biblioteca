@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Administrador | Entre o Amor e o Caos</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/admin.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <script src="js/auth.js"></script>
+  <script>
+    const usuario = JSON.parse(localStorage.getItem('usuarioLogado'))
+    if (!usuario || usuario.isAdmin !== true) {
+      alert('⛔ Acesso negado! Apenas administradores podem acessar esta página.')
+      window.location.href = 'index.html'
+    }
+  </script>
+  <script defer src="js/script.js"></script>
+  <script defer src="js/admin.js"></script>
+</head>
+<body>
+  <header>
+    <div class="header-logo">
+      <img src="imagem/logo.png" alt="Logo" class="logo">
+      <h1>Painel do Administrador</h1>
+    </div>
+    <nav id="menu" class="topin" aria-label="Principal">
+      <a href="index.html">Início</a>
+      <a href="biblioteca.html">Biblioteca</a>
+    </nav>
+    <button id="theme-toggle">🌙</button>
+  </header>
+
+  <main class="admin">
+    <div class="admin-container">
+      <h2>Gerenciamento da Biblioteca</h2>
+      
+      <section class="admin-stats">
+        <div class="stat-card">
+          <h3>Total de Livros</h3>
+          <p class="stat-number" id="total-livros">16</p>
+        </div>
+        <div class="stat-card">
+          <h3>Usuários Registrados</h3>
+          <p class="stat-number" id="total-usuarios">0</p>
+        </div>
+        <div class="stat-card">
+          <h3>Livros Favoritos</h3>
+          <p class="stat-number" id="total-favoritos">0</p>
+        </div>
+      </section>
+
+      <section class="admin-actions">
+        <h3>Ações Rápidas</h3>
+        <div class="actions-grid">
+          <button class="action-btn" onclick="abrirModalNovoLivro()">
+            📚 Adicionar Novo Livro
+          </button>
+          <button class="action-btn" onclick="verUsuarios()">
+            👥 Ver Usuários
+          </button>
+          <button class="action-btn" onclick="exportarDados()">
+            💾 Exportar Dados
+          </button>
+          <button class="action-btn" onclick="limparCache()">
+            🗑️ Limpar Cache
+          </button>
+        </div>
+      </section>
+
+      <section class="admin-books">
+        <h3>Livros Adicionados Recentemente</h3>
+        <div class="books-table-container">
+          <table class="books-table" id="tabela-livros">
+            <thead>
+              <tr>
+                <th>Título</th>
+                <th>Gênero</th>
+                <th>Ações</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td colspan="3" style="text-align: center;">Nenhum livro adicionado ainda.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="admin-users">
+        <h3>Usuários Recentes</h3>
+        <div class="users-list" id="users-list">
+          <p class="empty-state">Nenhum usuário registrado ainda.</p>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <p>© 2025 – Entre o amor e o caos | Painel Administrativo</p>
+  </footer>
+
+  <div id="modal-livro" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="fecharModal()">&times;</span>
+      <h3 id="modal-title">Adicionar Novo Livro</h3>
+      <form id="form-livro">
+        <input type="hidden" id="livro-id">
+        <div class="form-group">
+          <label for="livro-titulo">Título:</label>
+          <input type="text" id="livro-titulo" required>
+        </div>
+        <div class="form-group">
+          <label for="livro-genero">Gênero:</label>
+          <input type="text" id="livro-genero" placeholder="Ex: Romance, Drama, Suspense" required>
+        </div>
+        <div class="form-group">
+          <label for="livro-descricao">Descrição:</label>
+          <textarea id="livro-descricao" rows="4" required></textarea>
+        </div>
+        <div class="form-group">
+          <label for="livro-imagem">Capa do Livro:</label>
+          <div style="display: flex; gap: 10px; flex-wrap: wrap; align-items: center;">
+            <input type="file" id="livro-imagem-file" accept="image/*" style="flex: 1; min-width: 150px;">
+            <span style="color: var(--muted-foreground);">ou</span>
+            <input type="text" id="livro-imagem" placeholder="URL da imagem (alternativa)" style="flex: 1; min-width: 150px;">
+          </div>
+          <img id="preview-imagem" style="margin-top: 10px; max-width: 150px; max-height: 200px; display: none; border-radius: 8px;">
+        </div>
+        <div class="form-group">
+          <label for="livro-link">Link de Leitura:</label>
+          <input type="url" id="livro-link" placeholder="https://drive.google.com/..." required>
+        </div>
+        <div class="modal-actions">
+          <button type="submit" class="btn-save">Salvar</button>
+          <button type="button" class="btn-cancel" onclick="fecharModal()">Cancelar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</body>
+</html>

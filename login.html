@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login | Entre o Amor e o Caos</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/login.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <script defer src="js/auth.js"></script>
+  <script defer src="js/script.js"></script>
+  <script defer src="js/login.js"></script>
+</head>
+<body>
+  <header>
+    <div class="header-logo">
+      <img src="imagem/logo.png" alt="Logo" class="logo">
+      <h1>Biblioteca Colleen Hoover</h1>
+    </div>
+    <button id="theme-toggle">🌙</button>
+  </header>
+  <main class="login">
+    <div class="login-box">
+      <div class="login-tabs">
+        <button class="tab-button active" data-tab="login">Entrar</button>
+        <button class="tab-button" data-tab="register">Criar Conta</button>
+      </div>
+
+      <div class="login-header">
+        <img src="imagem/logo.png" alt="Logo" class="login-logo">
+        <h2>Entre o Amor e o Caos</h2>
+      </div>
+      
+      <div id="login-tab" class="tab-content active">
+        <p class="login-subtitle">Faça seu login para acessar a biblioteca</p>
+        
+        <form id="login-form">
+          <div class="form-group">
+            <label for="login-user">👤 Usuário</label>
+            <input id="login-user" type="text" placeholder="Digite seu usuário" required>
+          </div>
+
+          <div class="form-group">
+            <label for="login-pass">🔒 Senha</label>
+            <input id="login-pass" type="password" placeholder="Digite sua senha" required>
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" class="btn btn-login">Entrar</button>
+            <a href="index.html" class="btn btn-outline">Cancelar</a>
+          </div>
+        </form>
+      </div>
+
+      <div id="register-tab" class="tab-content">
+        <p class="login-subtitle">Crie sua conta na biblioteca</p>
+        
+        <form id="register-form">
+          <div class="form-group">
+            <label for="register-name">📝 Nome Completo</label>
+            <input id="register-name" type="text" placeholder="Digite seu nome" required>
+          </div>
+
+          <div class="form-group">
+            <label for="register-user">👤 Usuário</label>
+            <input id="register-user" type="text" placeholder="Escolha um usuário" required>
+          </div>
+
+          <div class="form-group">
+            <label for="register-pass">🔒 Senha</label>
+            <input id="register-pass" type="password" placeholder="Crie uma senha" required>
+          </div>
+
+          <div class="form-group">
+            <label for="register-confirm">🔒 Confirmar Senha</label>
+            <input id="register-confirm" type="password" placeholder="Confirme sua senha" required>
+          </div>
+
+          <div class="form-group">
+            <label for="register-email">📧 Email (opcional)</label>
+            <input id="register-email" type="email" placeholder="Seu email">
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" class="btn btn-login">Criar Conta</button>
+            <a href="index.html" class="btn btn-outline">Cancelar</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

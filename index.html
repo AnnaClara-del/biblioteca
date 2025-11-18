@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Entre o Amor e o Caos</title>
+  <link rel="stylesheet" href="style.css">>
+  <link rel="stylesheet" href="index.css">
+  <link rel="stylesheet" href="responsive.css">
+  <script defer src="auth.js"></script>
+  <script defer src="script.js"></script>
+  <script defer src="destaques.js"></script>
+</head>
+<body>
+  <header>
+    <div class="header-logo">
+      <img src="imagem/logo.png" alt="Logo Entre o Amor e o Caos" class="logo">
+      <h1>Biblioteca Virtual</h1>
+    </div>
+    <nav id="menu" class="nav" aria-label="Principal">
+      <a href="login.html">Login</a>
+      <a href="biblioteca.html">Acessar</a>
+    </nav>
+    <button id="theme-toggle">🌙</button>
+  </header>
+  
+  <main class="home">
+    <section class="generos-index">
+      <h2>Explore por Gênero</h2>
+      <div class="generos-grid">
+        <a href="biblioteca.html?genero=romance" class="genero-card">
+          <h3>Romance</h3>
+        </a>
+        <a href="biblioteca.html?genero=drama" class="genero-card">
+          <h3>Drama</h3>
+        </a>
+        <a href="biblioteca.html?genero=suspense" class="genero-card">
+          <h3>Suspense</h3>
+        </a>
+        <a href="biblioteca.html?genero=ficção" class="genero-card">
+          <h3>Ficção</h3>
+        </a>
+        <a href="biblioteca.html?genero=contemporâneo" class="genero-card">
+          <h3>Contemporâneo</h3>
+        </a>
+      </div>
+    </section>
+
+    <section class="intro">
+      <div class="intro-box">
+        <h2>Biblioteca</h2>
+        <h2>Entre o amor e o caos</h2>
+        <p>Esta biblioteca foi criada para os que se encantam com histórias que tocam a alma — dramas intensos,
+          emoções à flor da pele e o doce mistério do suspense.
+          Um refúgio dedicado aos admiradores da incomparável Colleen Hoover.
+          Permita-se mergulhar nessas páginas e viver cada sentimento como se fosse o seu.</p>
+      </div>
+    </section>
+
+    <section class="destaques">
+      <h2>Livros em Destaque</h2>
+      <div class="livros-destaque-container"></div>
+    </section>
+  </main>
+
+  <footer class="footer-sticky">© 2025 – Entre o amor e o caos.</footer>
+</body>
+</html>
